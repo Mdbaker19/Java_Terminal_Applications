@@ -10,4 +10,8 @@ public class Atm {
         this.methods = methods;
     }
 
+    public ArrayList<String> getMethods(){
+        return this.methods;
+    }
+
 }
