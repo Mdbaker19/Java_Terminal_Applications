@@ -19,7 +19,7 @@ public class Input {
         return this.sc.next();
     }
 
-    public int number(String prompt, int min, int max){
+    public int number(String prompt, double min, double max){
         System.out.println(prompt);
         String input = this.string();
         try{
@@ -36,6 +36,16 @@ public class Input {
 
     public double doubleNum(String prompt){
         System.out.println(prompt);
+        String input = this.string();
+        try{
+            double parsed = Double.parseDouble(input);
+            return parsed;
+        }catch (Exception e){
+            e.printStackTrace();
+            return doubleNum("Invalid input detected");
+        }
+    }
+    public double doubleNum(){
         String input = this.string();
         try{
             double parsed = Double.parseDouble(input);

@@ -13,5 +13,8 @@ public class Atm {
     public ArrayList<String> getMethods(){
         return this.methods;
     }
+    public void setMethods(ArrayList<String> methods){
+        this.methods = methods;
+    }
 
 }

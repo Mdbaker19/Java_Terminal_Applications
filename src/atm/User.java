@@ -6,17 +6,20 @@ public class User {
     private double monies;
     private String workPlace;
     private double payRate;
+    private int pinNumber;
+    private double cashOnHand;
 
     public User(String name, String workPlace, double pay, double startingBalance){
         this.name = name;
         this.workPlace = workPlace;
         this.payRate = pay;
         this.monies = startingBalance;
+        this.cashOnHand = 0;
     }
 
     public void work(int hours){
         double made = this.payRate * hours;
-        this.setMonies(this.getMonies() + made);
+        this.setCashOnHand(this.getCashOnHand() + made);
     }
 
     public double getMonies(){
@@ -49,5 +52,20 @@ public class User {
 
     public void setPayRate(double payRate) {
         this.payRate = payRate;
+    }
+
+    public void setPinNumber(int pin){
+        this.pinNumber = pin;
+    }
+    public int getPinNumber(){
+        return this.pinNumber;
+    }
+
+    public double getCashOnHand() {
+        return cashOnHand;
+    }
+
+    public void setCashOnHand(double cashOnHand) {
+        this.cashOnHand = cashOnHand;
     }
 }
