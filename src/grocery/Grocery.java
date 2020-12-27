@@ -5,6 +5,7 @@ public class Grocery {
     private String itemName;
     private String category;
     private double price;
+    private int amount;
 
     public Grocery(String name, String category){
         this.itemName = name;
@@ -21,5 +22,25 @@ public class Grocery {
     }
     public String getCategory(){
         return this.category;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }
