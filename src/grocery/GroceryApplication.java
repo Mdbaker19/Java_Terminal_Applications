@@ -12,10 +12,10 @@ public class GroceryApplication {
 
         boolean notExit = true;
         do{
-            int choice = sc.number(shop(), 1, 3);
-            if(choice == 3){
+            int choice = sc.number(shop(), 1, 4);
+            if(choice == 4){
                 notExit = false;
-                System.out.println("Total is x");
+                System.out.printf("Total is %.2f%n", viewTotal(cart));
             } else {
                 shopping(choice, sc, cart);
             }
@@ -23,7 +23,7 @@ public class GroceryApplication {
     }
 
     public static String shop(){
-        return ("[1] Add to cart, [2] View cart, [3] Checkout");
+        return ("[1] Add to cart, [2] View cart, [3] View current total, [4] Checkout");
     }
 
     public static void format(String s1, String s2, int s3){
@@ -38,6 +38,9 @@ public class GroceryApplication {
             case 2:
                 viewCart(cart);
                 break;
+            case 3:
+                System.out.printf("Current cart total is : %.2f%n", viewTotal(cart));
+                break;
         }
     }
 
@@ -51,6 +54,8 @@ public class GroceryApplication {
                     int addMore = sc.number("How many more are you buying?", 1, 9999);
                     int currAmount = item.getAmount();
                     item.setAmount(addMore + currAmount);
+                    double perItem = item.getPrice() / item.getAmount();
+                    item.setPrice(perItem * item.getAmount());
                     match = true;
                     break;
                 }
@@ -60,12 +65,14 @@ public class GroceryApplication {
                 int howMany = sc.number("And how many are you buying?", 1, 9999);
                 Grocery item1 = new Grocery(name, category);
                 item1.setAmount(howMany);
+                item1.setPrice();
                 cart.add(item1);
             }
         } else {
             String category = sc.string("What category does this item belong to?");
             int howMany = sc.number("And how many are you buying?", 1, 9999);
             Grocery item1 = new Grocery(name, category);
+            item1.setPrice();
             item1.setAmount(howMany);
             cart.add(item1);
         }
@@ -82,6 +89,14 @@ public class GroceryApplication {
             format(cart.get(i).getItemName(), cart.get(i).getCategory(), cart.get(i).getAmount());
         }
         System.out.println(" ");
+    }
+
+    public static double viewTotal(ArrayList<Grocery> cart){
+        double total = 0.0;
+        for(Grocery item : cart){
+            total += item.getPrice() * item.getAmount();
+        }
+        return total;
     }
 
 }

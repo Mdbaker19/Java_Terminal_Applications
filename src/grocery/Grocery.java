@@ -14,6 +14,9 @@ public class Grocery {
     public void setPrice(){
         this.price = (Math.random() * 11) + 1;
     }
+    public void setPrice(double price){
+        this.price = price;
+    }
     public double getPrice(){
         return this.price;
     }
@@ -30,10 +33,6 @@ public class Grocery {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public int getAmount() {
